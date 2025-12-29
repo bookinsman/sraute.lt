@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sraute - Balso Inžinerija</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lime: #bef264;
+            --lime-glow: rgba(190, 242, 100, 0.3);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbfbfb;
+            color: #0a0a0a;
+            overflow-x: hidden;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        /* High-quality Noise Overlay */
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .mosaic-bg {
+            background-image: 
+                linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Morphy Background Elements */
+        @keyframes morph {
+          0% { border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%; transform: translate(0, 0) rotate(0deg); }
+          33% { border-radius: 60% 40% 40% 60% / 60% 60% 40% 40%; transform: translate(5%, 10%) rotate(5deg); }
+          66% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%; transform: translate(-5%, 5%) rotate(-5deg); }
+          100% { border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%; transform: translate(0, 0) rotate(0deg); }
+        }
+
+        .glow-blob {
+          position: absolute;
+          width: 500px;
+          height: 500px;
+          background: radial-gradient(circle, var(--lime-glow) 0%, transparent 70%);
+          filter: blur(80px);
+          animation: morph 15s ease-in-out infinite;
+          z-index: -1;
+          pointer-events: none;
+        }
+
+        /* Sophisticated Reveal Logic */
+        .reveal {
+          opacity: 0;
+          transform: translateY(40px);
+          filter: blur(10px);
+          transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1), 
+                      opacity 1.2s cubic-bezier(0.2, 1, 0.3, 1), 
+                      filter 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+          will-change: transform, opacity, filter;
+        }
+        .reveal.active {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0px);
+        }
+
+        /* Stagger Children for complex sections */
+        .stagger-parent .reveal:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-parent .reveal:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-parent .reveal:nth-child(3) { transition-delay: 0.3s; }
+        .stagger-parent .reveal:nth-child(4) { transition-delay: 0.4s; }
+
+        /* Custom Engineered Elements */
+        .scanline {
+            width: 100%;
+            height: 1px;
+            background: var(--lime);
+            position: absolute;
+            z-index: 10;
+            top: 0;
+            left: 0;
+            opacity: 0.2;
+            animation: moveScanline 3s linear infinite;
+        }
+        @keyframes moveScanline {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+
+        /* Scroll Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--lime);
+            z-index: 10000;
+            transition: width 0.1s ease-out;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="scroll-progress"></div>
+    <div id="root"></div>
+    <script>
+        window.onscroll = function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
+        };
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
