@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const ProblemSolution: React.FC = () => {
+const ProblemSolution: React.FC = React.memo(() => {
   return (
     <section className="grid md:grid-cols-2 gap-12 md:gap-32 items-start px-4 md:px-0">
       <div className="space-y-12 md:space-y-16">
@@ -42,7 +42,7 @@ const ProblemSolution: React.FC = () => {
 
       <div className="md:mt-40 space-y-12 md:space-y-16">
         <div className="p-10 md:p-16 bg-lime-400 text-black border-[3px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group">
-          <div className="absolute -top-10 -right-10 w-24 md:w-32 h-24 md:h-32 bg-black/5 rounded-full group-hover:scale-150 transition-transform duration-700" />
+          <div className="absolute -top-10 -right-10 w-24 md:w-32 h-24 md:h-32 bg-black/5 rounded-full group-hover:scale-125 transition-transform duration-500" />
           <div className="flex items-center gap-3 mb-6">
             <span className="font-bold text-xl">✓</span>
             <span className="mono text-[10px] block font-black uppercase tracking-[0.3em]">Sprendimas</span>
@@ -59,6 +59,8 @@ const ProblemSolution: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+ProblemSolution.displayName = 'ProblemSolution';
 
 export default ProblemSolution;

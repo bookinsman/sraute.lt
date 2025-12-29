@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const MarketDefects: React.FC = () => {
+const MarketDefects: React.FC = React.memo(() => {
   const defects = [
     { code: "ERR_01", title: "Generinė Kalba", desc: "90% verslų Lietuvoje skamba identiškai. Tai identiteto mirtis." },
     { code: "ERR_02", title: "Žema Konversija", desc: "Srautas yra, bet pardavimų nėra. Prarandate tūkstančius kasdien." },
@@ -14,7 +14,7 @@ const MarketDefects: React.FC = () => {
       <div className="text-left mb-16 md:mb-24 flex flex-col md:flex-row items-start md:items-baseline gap-4 md:gap-12">
         <h2 className="text-5xl md:text-9xl font-black uppercase tracking-tighter leading-none text-black">Rinkos <br/> Defektai</h2>
         <div className="flex items-center gap-3">
-          <div className="w-2.5 h-2.5 bg-red-600 rounded-full animate-ping"></div>
+          <div className="w-2.5 h-2.5 bg-red-600 rounded-full"></div>
           <p className="mono text-[10px] md:text-sm text-red-600 font-black uppercase tracking-widest">Rastos kritinės klaidos</p>
         </div>
       </div>
@@ -38,6 +38,8 @@ const MarketDefects: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+MarketDefects.displayName = 'MarketDefects';
 
 export default MarketDefects;

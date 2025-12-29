@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const FinalCTA: React.FC = () => {
+const FinalCTA: React.FC = React.memo(() => {
   return (
     <section className="relative py-24 md:py-32 px-6 md:px-24 bg-black text-white text-center overflow-hidden dysmorphy-card">
       {/* Background decoration */}
@@ -21,15 +21,17 @@ const FinalCTA: React.FC = () => {
         </div>
 
         <div className="pt-6 md:pt-10 w-full md:w-auto">
-          <button className="relative group bg-lime-400 text-black text-2xl md:text-5xl px-10 md:px-24 py-6 md:py-12 font-black uppercase tracking-tighter transition-all hover:scale-105 active:scale-95 w-full md:w-auto">
+          <button className="relative group bg-lime-400 text-black text-2xl md:text-5xl px-10 md:px-24 py-6 md:py-12 font-black uppercase tracking-tighter transition-transform hover:scale-[1.02] active:scale-95 w-full md:w-auto">
             <span className="relative z-10">Rezervuoti Auditą</span>
-            <div className="absolute inset-0 bg-white scale-0 group-hover:scale-100 transition-transform origin-bottom duration-300"></div>
-            <span className="absolute inset-0 border-[4px] md:border-[6px] border-lime-400 translate-x-2 md:translate-x-3 translate-y-2 md:translate-y-3 -z-10 group-hover:translate-x-4 md:group-hover:translate-x-6 group-hover:translate-y-4 md:group-hover:translate-y-6 transition-all"></span>
+            <div className="absolute inset-0 bg-white scale-0 group-hover:scale-100 transition-transform origin-bottom duration-200"></div>
+            <span className="absolute inset-0 border-[4px] md:border-[6px] border-lime-400 translate-x-2 md:translate-x-3 translate-y-2 md:translate-y-3 -z-10 group-hover:translate-x-3 md:group-hover:translate-x-4 group-hover:translate-y-3 md:group-hover:translate-y-4 transition-transform duration-200"></span>
           </button>
         </div>
       </div>
     </section>
   );
-};
+});
+
+FinalCTA.displayName = 'FinalCTA';
 
 export default FinalCTA;

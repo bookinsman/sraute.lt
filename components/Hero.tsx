@@ -1,12 +1,12 @@
 
 import React from 'react';
 
-const Hero: React.FC = () => {
+const Hero: React.FC = React.memo(() => {
   return (
     <section className="relative pt-4 md:pt-12 flex flex-col items-center min-h-0">
-      {/* Dynamic Morphy Globs */}
-      <div className="glow-blob top-[5%] left-[-15%] opacity-40 mix-blend-multiply" />
-      <div className="glow-blob bottom-[10%] right-[-10%] opacity-30 mix-blend-multiply" style={{ animationDelay: '-4s', background: 'radial-gradient(circle, rgba(165, 243, 252, 0.3) 0%, transparent 70%)' }} />
+      {/* Optimized Morphy Globs - Reduced on mobile */}
+      <div className="glow-blob top-[5%] left-[-15%] opacity-30" />
+      <div className="glow-blob bottom-[10%] right-[-10%] opacity-20" style={{ animationDelay: '-8s' }} />
       
       <div className="relative z-10 w-full flex flex-col items-center">
         {/* The Big Title - Ultra Tight for Mobile */}
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
                   ${item.color === 'bg-black' ? 'text-white' : 'text-black'} 
                   ${item.color}
                 `}>
-                  <div className="scanline opacity-0 group-hover:opacity-10"></div>
+                  <div className="scanline opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
                   
                   <div className="space-y-1">
                     <div className="flex justify-between items-start">
@@ -97,6 +97,8 @@ const Hero: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+Hero.displayName = 'Hero';
 
 export default Hero;

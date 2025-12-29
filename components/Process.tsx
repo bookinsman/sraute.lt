@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const Process: React.FC = () => {
+const Process: React.FC = React.memo(() => {
   const steps = [
     {
       num: "01",
@@ -35,7 +35,7 @@ const Process: React.FC = () => {
             <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-black">Procesas</h2>
           </div>
         </div>
-        <div className="text-left md:text-right text-gray-400 mono text-[10px] uppercase leading-loose font-bold bg-white/50 backdrop-blur-sm p-2 md:p-0">
+        <div className="text-left md:text-right text-gray-400 mono text-[10px] uppercase leading-loose font-bold bg-white/80 p-2 md:p-0">
           [ SISTEMINIS PRIĖJIMAS ] <br className="hidden md:block"/>
           [ BE ATSITIKTINUMŲ ]
         </div>
@@ -66,6 +66,8 @@ const Process: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+Process.displayName = 'Process';
 
 export default Process;

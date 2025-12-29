@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const Header: React.FC = () => {
+const Header: React.FC = React.memo(() => {
   return (
     <header className="py-10 flex justify-between items-center relative z-20">
       <div className="flex items-center space-x-3 group cursor-pointer">
@@ -32,6 +32,8 @@ const Header: React.FC = () => {
       </button>
     </header>
   );
-};
+});
+
+Header.displayName = 'Header';
 
 export default Header;

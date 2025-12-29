@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const Impact: React.FC = () => {
+const Impact: React.FC = React.memo(() => {
   return (
     <section className="relative py-24 border-t-2 border-black/5">
       <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 gap-8 px-4 md:px-0">
@@ -36,6 +36,8 @@ const Impact: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+Impact.displayName = 'Impact';
 
 export default Impact;

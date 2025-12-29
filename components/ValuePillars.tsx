@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const ValuePillars: React.FC = () => {
+const ValuePillars: React.FC = React.memo(() => {
   const pillars = [
     {
       id: "01",
@@ -58,6 +58,8 @@ const ValuePillars: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+ValuePillars.displayName = 'ValuePillars';
 
 export default ValuePillars;

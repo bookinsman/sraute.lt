@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const Footer: React.FC = () => {
+const Footer: React.FC = React.memo(() => {
   return (
     <footer className="pt-24 md:pt-32 pb-12 md:pb-16 border-t-2 border-black/10">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16 mb-16 md:mb-24 px-4 md:px-0">
@@ -55,6 +55,8 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = 'Footer';
 
 export default Footer;
